@@ -21,7 +21,7 @@ body{
         #f09819
     );
     left: -80px;
-    top: -80px;
+    top: -100px;
 }
 .shape1:last-child{
     background: linear-gradient(
@@ -30,11 +30,11 @@ body{
         #1845ad,
         #23a2f6
     );
-    right: -30px;
-    bottom: -470px;
+    right: -80px;
+    bottom: -510px;
 }
 #formulario{
-    margin-top: 160px;
+    margin-top:200px;
     margin-bottom: auto;
     height: 980px;
     width: 400px;
@@ -94,6 +94,22 @@ input{
     border-radius: 5px;
     cursor: pointer;
 }
+#btn:hover{
+    margin-top: 40px;
+    width: 100%;
+    background: linear-gradient( to left,
+        #ff512f,
+        #f09819
+    );
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 #btn2{
     margin-top: 0%;
     width: 100%;
@@ -105,6 +121,22 @@ input{
     border-radius: 5px;
     cursor: pointer;
 }
+#btn2:hover{
+    margin-top: 0%;
+    width: 100%;
+    background: linear-gradient(
+        to right,
+        #1845ad,
+        #23a2f6
+    );
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 #textregister{
     text-align: center;
@@ -114,11 +146,23 @@ input{
     line-height: 42px;
     text-align: center;
     padding-top: 0px;
+  /*  cursor: pointer; */
+}
+#textregister:hover{
+    text-align: center;
+    background: -webkit-linear-gradient(#ff512f,
+    #f09819);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
    
 }
 
 #textregisterdiv{
     padding-bottom: 0px;
     padding-top: 0px;
-    /* border: 2px solid red; */
+  /*    border: 2px solid red;  */
 }

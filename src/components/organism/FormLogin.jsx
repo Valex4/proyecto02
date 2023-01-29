@@ -31,9 +31,9 @@ function FormLogin() {
         </div>
          <Input type={"text"} textLabel={"User / Email"} inputName={"username"} id={"username"} divClassName=""/>
          <Input type={"password"} textLabel={"Password"} inputName={"password"} id={"psw"} divClassName=""/>
-        <button onClick={handleClick}>Login</button>
+        <button onClick={handleClick} id="boton">Login</button>
         <h3>Haven't account?</h3>
-        <button onClick={handlerClickRegister} id="btn2">Register Now!!</button>
+        <button onClick={handlerClickRegister} id="boton2">Register Now!!</button>
         </form>
         </>
     );
