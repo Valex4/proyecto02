@@ -8,11 +8,40 @@ function FormLogin() {
     const form = useRef();
     const handleClick = (e) =>{
         e.preventDefault();
+        const endPoint ="http://34.225.239.102/api/iniciar"
         const updateForm = new FormData(form.current);
         let updateUser = updateForm.get('username');
         let updatePassword = updateForm.get('password');
         console.log(updateUser + " " + updatePassword);
-        navigate("/");
+      
+
+      const options = {
+        method:"POST",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "usuario": updateUser,
+            "contrasenia": updatePassword
+        })
+    }
+
+    fetch(endPoint, options) 
+                    .then(response => response.json())
+                    .then(data => {
+                        /* console.log(data.status);
+                        alert(JSON.stringify(data))
+                        navigate("/") */
+
+                        if(data.status === true) {
+                            alert("Puedes pasar");
+                               navigate("/"); 
+                        }else{
+                            alert("Error, " + data.message);
+                        }
+                        
+                    })
+
     }
 
     const handlerClickRegister = () => {
@@ -29,8 +58,8 @@ function FormLogin() {
         <div id="textlogindiv">
         <h1 id="textlogin">Login</h1>
         </div>
-         <Input type={"text"} textLabel={"User / Email"} inputName={"username"} id={"username"} divClassName=""/>
-         <Input type={"password"} textLabel={"Password"} inputName={"password"} id={"psw"} divClassName=""/>
+         <Input type={"text"} textLabel={"Username: "} inputName={"username"} id={"username"} divClassName=""/>
+         <Input type={"password"} textLabel={"Password: "} inputName={"password"} id={"psw"} divClassName=""/>
         <button onClick={handleClick} id="boton">Login</button>
         <h3>Haven't account?</h3>
         <button onClick={handlerClickRegister} id="boton2">Register Now!!</button>

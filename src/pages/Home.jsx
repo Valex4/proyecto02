@@ -1,7 +1,10 @@
-import Caption from "../components/atoms/Caption";
+import "../assets/styles/Home.css"
+import FormBus from "../components/organism/FormBus";
 function Home() {
     return (
-        <Caption msn="Soy el home"></Caption>
+        <>
+        <FormBus/>
+        </>
       );
 }
 

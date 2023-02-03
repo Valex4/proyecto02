@@ -2,14 +2,18 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Input from "../atoms/Input";
+
 function FormRegister() {
     const formRegister = useRef();
     const navigate = useNavigate();
+    const endPoint ='http://34.225.239.102/api/registrar/usuario';
+   
     const handlerClick = (event) => {
         event.preventDefault();
         const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         const register = new FormData(formRegister.current);
         let name = register.get("name");
+        let user = register.get("user");
         let email = register.get("email");
         let password = register.get("password");
         let passwordConfirmation = register.get("password2");
@@ -21,9 +25,33 @@ function FormRegister() {
             if(password == passwordConfirmation){
                 console.log("Password correcto");
                 console.log("Name: " + name + " Email: " + email + " Password: " + password + " Password Confirmation: "+ passwordConfirmation + " Phone: " + phone);
-                navigate("/")
+                /* navigate("/") */
+                const options = {
+                        method:"POST",
+                        headers:{
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "nombre":name,
+                            "usuario": user,
+                            "correo": email,
+                            "contrasenia": password
+                        })
+                    }
+
+                    fetch(endPoint, options) 
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.status);
+                        alert(JSON.stringify(data))
+                        navigate("/")
+                    })
+
+
+
             }else{
                 console.log("Password incorrecto");
+                alert("Password incorrecto")
             }
         }else{
             console.log("Email incorrecto");
@@ -45,11 +73,10 @@ function FormRegister() {
                 <h1 id="textregister">Register</h1>
             </div>
             <Input type={"text"} id={"name"} inputName={"name"} textLabel={"Name: "} divClassName=""/>
-            <Input type={"text"} id={"lastname"} inputName={"lastname"} textLabel={"Last Name: "} divClassName=""/>
+            <Input type={"text"} id={"lastname"} inputName={"user"} textLabel={"User: "} divClassName=""/>
             <Input type={"email"} id={"email"} inputName={"email"} textLabel={"Email: "} divClassName=""/>
             <Input type={"password"} id={"password"} inputName={"password"} textLabel={"Password: "} divClassName=""/>
             <Input type={"password"} id={"password2"} inputName={"password2"} textLabel={"Confirm password: "} divClassName=""/>
-            <Input type={"tel"} id={"phone"} inputName={"phone"} textLabel={"Phone: "} divClassName=""/>
 
             <button type="button" onClick={handlerClick} id="btn">Register Now!!</button>
             <h3>You've an account?</h3>
