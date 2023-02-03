@@ -28,7 +28,6 @@ function FormBus() {
         let licenceValue = register.get("licence");
         console.log(seats)
         if(seats > 0){
-            alert("chido");
             alert(" Date: " + dateValue + " licence: " + licenceValue + " id Nave: " + id + " asientos: " + seats)
             const options = {
                 method:"POST",
@@ -51,7 +50,7 @@ function FormBus() {
             .then(data => {
                 console.log(data.status);
                 alert(JSON.stringify(data))
-                navigate("/")
+                navigate("/login")
             })
        
        
@@ -62,7 +61,8 @@ function FormBus() {
        
         
     }
-  
+    
+    
 
     return ( 
         <form action="" id="formulario2" ref={formRegister2}>
@@ -84,6 +84,7 @@ function FormBus() {
             <Input type={"hidden"} id={"number"} inputName={"licence"} textLabel={"License number: "} value={randomValue}/>
             <input type="text" value={randomValue} disabled/>
             <button type="button" id="btn1" onClick={handlerClick}>Register</button>
+          
         </form>
 
      );

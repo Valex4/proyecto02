@@ -35,7 +35,7 @@ function FormLogin() {
 
                         if(data.status === true) {
                             alert("Puedes pasar");
-                               navigate("/"); 
+                               navigate("/registerAutobus"); 
                         }else{
                             alert("Error, " + data.message);
                         }

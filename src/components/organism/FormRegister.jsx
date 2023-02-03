@@ -44,7 +44,7 @@ function FormRegister() {
                     .then(data => {
                         console.log(data.status);
                         alert(JSON.stringify(data))
-                        navigate("/")
+                        navigate("/login")
                     })
 
 
@@ -61,6 +61,7 @@ function FormRegister() {
     const handlerClickRegister = (event) => {
         navigate("/login");
     }
+
 
     return ( 
         <>
